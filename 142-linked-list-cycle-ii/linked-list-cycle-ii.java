@@ -9,6 +9,27 @@
  *     }
  * }
  */
+// Using HashSet Not Optimal
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode node = head;
+        HashSet<ListNode> set = new HashSet<>();
+
+        while(node!=null){
+            if (set.contains(node)){
+                return node;
+            }
+            else{
+                set .add(node);
+                node = node.next;
+            }
+            
+        }
+        return null;
+    }
+}
+
+// Floyd Approach (Optimal)
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head;
