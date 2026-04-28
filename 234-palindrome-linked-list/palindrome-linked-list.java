@@ -13,23 +13,21 @@ class Solution {
         if (head == null) return true;
         ListNode fast = head;
         ListNode mid = head;
-        ListNode leftOfMid = null;
         while (fast!=null && fast.next!=null){
-            leftOfMid = mid;
             mid = mid.next;
             fast = fast.next.next;
         }
 
+        if (fast !=null) mid = mid.next;
+
         ListNode prev = null;
         ListNode pres = mid;
-        ListNode later = pres.next;
+        ListNode later;
         while (pres!=null){
+            later = pres.next;
             pres.next = prev;
             prev = pres;
             pres = later;
-            if (later!=null){
-                later = later.next;
-            }
         }
 
         ListNode node1 = head;
