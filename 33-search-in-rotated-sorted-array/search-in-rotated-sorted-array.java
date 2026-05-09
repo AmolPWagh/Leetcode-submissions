@@ -12,36 +12,30 @@ class Solution {
         return -1;
     }
 
+    static int binarySearch(int[] nums, int target, int s, int e){
+        while(s<=e){
+            int mid = s + (e-s)/2;
+            if(nums[mid]==target) return mid;
+            else if (nums[mid]<target) s = mid+1;
+            else e = mid-1;
+        }
+        return -1;
+    }
+
     public int search(int[] nums, int target) {
         int s = 0;
         int e = nums.length-1;
         if (nums[s]<=nums[e]){
-            while(s<=e){
-                int mid = s + (e-s)/2;
-                if(nums[mid]==target) return mid;
-                else if (nums[mid]<target) s = mid+1;
-                else e = mid-1;
-            }
-            return -1;
+            return binarySearch(nums, target, s, e);
         }
         else{
             int pivot = findPivot(nums);
             e = pivot;
-            while(s<=e){
-                int mid = s + (e-s)/2;
-                if(nums[mid]==target) return mid;
-                else if (nums[mid]<target) s = mid+1;
-                else e = mid-1;
-            }
+            int res = binarySearch(nums, target, s, e);
+            if (res!=-1) return res;
             s = pivot+1;
             e = nums.length -1;
-            while(s<=e){
-                int mid = s + (e-s)/2;
-                if(nums[mid]==target) return mid;
-                else if (nums[mid]<target) s = mid+1;
-                else e = mid-1;
-            }
+            return binarySearch(nums, target, s, e);
         }
-        return -1;
     }
 }
