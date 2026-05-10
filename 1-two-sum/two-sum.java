@@ -7,6 +7,7 @@ class Solution {
             if (hm.containsKey(req)){
                 ans[0]=(hm.get(req));
                 ans[1]=i;
+                break;
             }
             else{
                 hm.put(nums[i],i);
