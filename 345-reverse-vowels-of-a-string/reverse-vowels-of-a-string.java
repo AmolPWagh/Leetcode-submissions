@@ -14,22 +14,17 @@ class Solution {
         int i=0;
         int j=arr.length-1;
         while(i<j){
-            if ( isVowel(arr[i]) && !isVowel(arr[j])) {
-                j--;
-            }
-            if ( !isVowel(arr[i]) && isVowel(arr[j])) {
+            if (!isVowel(arr[i])) {
                 i++;
             }
-            if ( !isVowel(arr[i]) && !isVowel(arr[j])) {
-                i++;
+            else if (!isVowel(arr[j])) {
                 j--;
             }
-            if ( isVowel(arr[i]) && isVowel(arr[j])) {
-                swap (arr, i, j);
+            else {
+                swap(arr, i, j);
                 i++;
                 j--;
             }
-
         }
         return new String(arr);
     }
