@@ -1,6 +1,6 @@
 class Solution {
     public String mergeAlternately(String word1, String word2) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(word1.length() + word2.length());
         int n1 = word1.length()-1;
         int n2 = word2.length()-1;
 
