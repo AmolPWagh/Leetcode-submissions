@@ -1,18 +1,12 @@
 class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        HashMap<Integer,Integer> hm = new HashMap<>();
-        int[] ans = new int[2];
-        for (int i=0; i<numbers.length; i++){
-            int req = target - numbers[i];
-            if (hm.containsKey(req)){
-                ans[0]=(hm.get(req))+1;
-                ans[1]=i+1;
-                break;
-            }
-            else{
-                hm.put(numbers[i],i);
-            }
+        int i = 0;
+        int j = numbers.length - 1;
+        while (i < j) {
+            if (numbers[i] + numbers[j] < target) i++;
+            else if (numbers[i] + numbers[j] > target) j--;
+            else return new int[]{i+1, j+1};
         }
-        return ans;
+        return new int[]{-1, -1};
     }
 }
