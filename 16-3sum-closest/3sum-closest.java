@@ -10,12 +10,16 @@ class Solution {
 
             while(j<k){
                 int currSum = nums[i] + nums[j] + nums[k];
-                int sumDiff = Math.abs(sum-target);
-                int currSumDiff = Math.abs(currSum-target);
-                if (sumDiff > currSumDiff) sum = currSum;
+                if ( Math.abs(sum-target) > Math.abs(currSum-target) ) sum = currSum;
 
-                if (currSum < target)  j++;
-                else if (currSum > target) k--;
+                if (currSum < target){
+                    j++;
+                    while(j<k && nums[j]==nums[j-1]) j++;
+                }
+                else if (currSum > target){
+                    k--;
+                    while(j<k && nums[k]==nums[k+1]) k--;
+                }
                 else{
                    return  currSum;
                 }
