@@ -4,18 +4,16 @@ class Solution {
         int boats = 0;
         int i=0;
         int j=people.length-1;
-        while(i<j){
+        while(i<=j){
             if (people[i]+people[j] <= limit){
                 i++;
                 j--;
-                boats++;
             }
             else{
                 j--;
-                boats++;
             }
+            boats++;
         }
-        if (i==j) boats++;
         return boats;
 
     }
