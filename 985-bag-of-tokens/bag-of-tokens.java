@@ -11,6 +11,7 @@ class Solution {
                 power -= tokens[i];
                 i++;
                 score++;
+                maxScore = Math.max(score, maxScore);
             }
             else if(score >=1){
                 power += tokens[j];
@@ -18,10 +19,8 @@ class Solution {
                 score--;
             }
             else {
-                i++;
-                j--;
+                break;
             }
-            maxScore = Math.max(score, maxScore);
         }
         return maxScore;
     }
