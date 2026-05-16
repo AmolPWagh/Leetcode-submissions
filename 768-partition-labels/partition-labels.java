@@ -6,13 +6,10 @@ class Solution {
         int end = 0;
 
         int[] last = new int[26];
-        Arrays.fill(last, -1);
-        for (int i=n-1; i>=0; i--){
-            if (last[s.charAt(i) - 'a'] == -1){
-                last[s.charAt(i) - 'a'] = i;
-            }
+        for(int i = 0; i < n; i++){
+            last[s.charAt(i) - 'a'] = i;
         }
-
+        
         for (int i=0; i<n; i++){
             end = Math.max(end, last[s.charAt(i)-'a']);
             if (end == i){
